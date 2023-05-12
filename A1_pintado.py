@@ -1,28 +1,28 @@
 #Se importan las funciones de los módulos correspondientes
 from turtle import *
 from freegames import vector
-import math 
+import math
 
-#Se define la función para el dibujado de una línea recta
+#Se define la función para el dibujado de una línea recta. La función up() hace que no se trace
+# mientras el cursor se posiciona en las coordenadas de inicio. La función down() hace que se 
+# trace mientras el cursor está en movimiento.
 def line(start, end):
     "Draw line from start to end."
-    #Se ejecuta up(), no se trazará nada mientras se mueve el cursor de al punto de inicio
     up()
     #Se trazlada el cursor de dibujado a las coordenadas start.x y start.y
     goto(start.x, start.y)
-    #Se ejecuta down(), se trazará mientras se mueve el cursor de al punto de final
     down()
     #Se trazlada el cursor de dibujado a las coordenadas end.x y end.y
     goto(end.x, end.y)
 
-#Se define la función para el dibujado de un cuadrado.
+#Se define la función para el dibujado de un cuadrado. La función up() hace que no se trace
+# mientras el cursor se posiciona en las coordenadas de inicio. La función down() hace que se 
+# trace mientras el cursor está en movimiento.
 def square(start, end):
     "Draw square from start to end."
-    #Se llama a up(), no se trazará mientras el cursor se posiciona en las coordenadas de inicio.
     up()
     #Se trazlada el cursor de dibujado a las coordenadas start.x y start.y
     goto(start.x, start.y)
-    #Se llama a down(), se trazará mientras se mueve el cursor al punto deseado
     down()
     #begin_fill() iniciara la función de rellenado de la figura dibujada 
     begin_fill()
@@ -34,7 +34,9 @@ def square(start, end):
     #Se llama a la función end_fill(), esta rellena la figura trazada
     end_fill()
 
-#Se define la función para el dibujado de un circulo relleno
+#Se define la función para el dibujado de un circulo relleno. La función up() hace que no se trace
+# mientras el cursor se posiciona en las coordenadas de inicio. La función down() hace que se 
+# trace mientras el cursor está en movimiento.
 def circle(start, end):
     "Draw circle from start to end."
     up()
@@ -46,13 +48,30 @@ def circle(start, end):
     #Se traza el circulo con diametro delimitado por tap inicial y final
     dot(diametro, "black")
 
+#Se define la función para el dibujado de un rectángulo. La función up() hace que no se trace
+# mientras el cursor se posiciona en las coordenadas de inicio. La función down() hace que se 
+# trace mientras el cursor está en movimiento. La función left() rota la dirección de trazado 
+# el numero de grados declarado en su parámetro. La función forward() traslada el cursor la 
+# distancia equivalente al valor declarado en su parámetro.
 def rectangle(start, end):
     "Draw rectangle from start to end."
-    pass  # TODO
+    up()
+    #Se posiciona el cursor en las coordenadas del tap inicial
+    goto(start.x,start.y)
+    down()
+    forward(end.x-start.x)
+    left(90)
+    forward(end.y-start.y)
+    left(90)
+    forward(end.x-start.x)
+    left(90)
+    forward(end.y-start.y)
+    left(90)
 
 def triangle(start, end):
     "Draw triangle from start to end."
     pass  # TODO
+
 #Para cada clic en el area de dibujado, se almacenaran las coordenadas x,y del cursor
 def tap(x, y):
     "Store starting point or draw shape."
