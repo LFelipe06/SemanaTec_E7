@@ -1,12 +1,12 @@
+#Código obtenido del sitio Grant Jenks para la actividad 2 de la semana Tec "Herramientas computacionales: el arte de la programación"
 #Se llaman las librerias que ayudan a la ejecucion grafica y logica del juego
 from turtle import *
-from random import randrange
+from random import randrange, choice
 from freegames import square, vector
 #Se establecen las variables de control para la ubicacion de la comida de la serpiente, la ubicacion de la serpiente y su direccion
 food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
-
 #Con esta funcion se cambian los valores del vector de direccion de la serpiente en base a las variables en x y y
 def change(x, y):
     "Change snake direction."
@@ -16,6 +16,8 @@ def change(x, y):
 def inside(head):
     "Return True if head inside boundaries."
     return -200 < head.x < 190 and -200 < head.y < 190
+def insidefood(foodh):
+    return -200 < foodh.x < 190 and -200 < foodh.y < 190
 #Con esta funcion se mantiene a la serpiente avanzando sobre el segmento en el que se encuentre
 #primero se le asigna a la cabeza el valor de la ubicacion de la serpiente
 #se mueve la serpiente con el vector de direccion aim
@@ -44,12 +46,22 @@ def move():
     #Se dibuja el cuerpo de la serpiente
     for body in snake:
         square(body.x, body.y, 9, 'black')
-    #Se dibuja la comida de color verde
-    square(food.x, food.y, 9, 'green')
     #Se actualiza el ambiente grafico
+    square(food.x, food.y, 9, 'green')
     update()
     #Mueve a la serpiente agregandole valores al vector de direccion de la serpiente
     ontimer(move, 100)
+#Con esta funcion se establece un vector de direccion aleatorio a la comida
+def moveComida():
+    #Se define el vector de direccion y se suma al vector original
+    foodh= food + vector(choice([-10, 0, 10]), choice([-10, 0, 10]))
+    #Si el vector esta afuera de los limites de la ventana entonces se recalcula
+    while not inside(foodh):
+        foodh = food + vector(choice([-10, 0, 10]), choice([-10, 0, 10]))
+    #Se le asigna los valores de x y y al vector de posicion de la comida
+    food.x=foodh.x
+    food.y=foodh.y
+    ontimer(moveComida, 500)
 #Se configura el tamaño de la ventana del juego
 setup(420, 420, 370, 0)
 #Se esconde la tortuga que viene en la libreria turtle
@@ -66,6 +78,7 @@ onkey(lambda: change(-10, 0), 'Left')
 onkey(lambda: change(0, 10), 'Up')
 #Si se presiona abajo, entonces cambia el vector hacia abajo
 onkey(lambda: change(0, -10), 'Down')
-#Se llama la funcion move en el main
+#Se llama la funcion move y move comidida en el main
 move()
+moveComida()
 done()
