@@ -68,9 +68,22 @@ def rectangle(start, end):
     forward(end.y-start.y)
     left(90)
 
+#Se define la función para el trazado de un triángulo. La función up() hace que no se trace
+# mientras el cursor se posiciona en las coordenadas de inicio. La función down() hace que se 
+# trace mientras el cursor está en movimiento.
 def triangle(start, end):
     "Draw triangle from start to end."
-    pass  # TODO
+    up()
+    #Se posiciona el cursor en las coordenadas del tap inicial
+    goto(start.x,start.y)
+    down()
+    #Se calcula la distancia de los lados del triángulo
+    lado=end.x-start.x
+    #El ciclo for trazará una línea recta de largo igual a la diferencia entre start.x y end.x .
+    #Después del trazado, la dirección de dibujado rota 120 grados para posteriormente repetir el ciclo
+    for count in range(3):
+        forward(lado)
+        left(120)
 
 #Para cada clic en el area de dibujado, se almacenaran las coordenadas x,y del cursor
 def tap(x, y):
