@@ -1,13 +1,3 @@
-"""Pacman, classic arcade game.
-
-Exercises
-
-1. Change the board -listo 
-2. Change the number of ghosts. -listo
-3. Change where pacman starts. -listo
-4. Make the ghosts faster/slower. -listo
-5. Make the ghosts smarter.
-"""
 #Codigo obtenido de colección de videojuegos simples implementados en python: Free Python Games (https://grantjenks.com/docs/freegames/)
 #Editado por Andre Rossell Manrique A01736035 en el transcuro de Mayo 11 y Mayo 12 de 2023 
 #para la UF: TC1001S.121 del semestre FJ 23 en ITESM C. Puebla 
@@ -138,7 +128,21 @@ def move():
     dot(20, 'yellow') #despues de encontrar al pacman, pinta el putno de su posicion 
 
     for point, course in ghosts: #loopea por cada uno de los fantasmas para dibujarlos
-        if valid(point + course): #valida su trayectoria y aplica movimiento 
+        if abs(pacman - point) < 50: # se establece una distancia de detección de 50 unidades
+            # Si el pacman está más cerca del fantasma que la distancia de detección, se actualiza el curso del fantasma para perseguir al pacman
+            if pacman.x > point.x:
+                course.x = 7
+            elif pacman.x < point.x:
+                course.x = -7
+            else:
+                course.x = 0
+            if pacman.y > point.y:
+                course.y = 7
+            elif pacman.y < point.y:
+                course.y = -7
+            else:
+                course.y = 0
+        if valid(point + course):
             point.move(course)
         else: #genera una decision aleatoria que decida un proximo movimiento 
             options = [ #velocidad actualizada

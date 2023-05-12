@@ -1,4 +1,7 @@
-#Código obtenido del sitio Grant Jenks para la actividad 2 de la semana Tec "Herramientas computacionales: el arte de la programación"
+#Codigo obtenido de colección de videojuegos simples implementados en python: Free Python Games (https://grantjenks.com/docs/freegames/)
+#Editado por Cruz Daniel Perez Jimenez en el transcuro de Mayo 11 y Mayo 12 de 2023 
+#para la UF: TC1001S.121 del semestre FJ 23 en ITESM C. Puebla 
+
 #Se llaman las librerias que ayudan a la ejecucion grafica y logica del juego
 from turtle import *
 from random import randrange, choice
