@@ -1,5 +1,6 @@
 #Se importan las funciones de los módulos correspondientes
 from turtle import *
+#Liga de la documentación: https://docs.python.org/3/library/turtle.html#module-turtle
 from freegames import vector
 import math
 
@@ -98,15 +99,18 @@ def tap(x, y):
         shape(start, end)
         state['start'] = None
 
+#La funcion store() llama a la función state con el valor de parámetro correspondiente a key.
 def store(key, value):
     "Store value in state at key."
     state[key] = value
 
 state = {'start': None, 'shape': line}
+#Se define el tamaño y la posicion del ambiente gráfico
 setup(420, 420, 370, 0)
 onscreenclick(tap)
 listen()
 onkey(undo, 'u')
+#Se definen distintas funciones activadas por el input (keystroke) del usuario
 onkey(lambda: color('black'), 'K')
 onkey(lambda: color('white'), 'W')
 onkey(lambda: color('green'), 'G')
