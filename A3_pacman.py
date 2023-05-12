@@ -3,9 +3,9 @@
 Exercises
 
 1. Change the board.
-2. Change the number of ghosts.
-3. Change where pacman starts.
-4. Make the ghosts faster/slower.
+2. Change the number of ghosts. -listo
+3. Change where pacman starts. -listo
+4. Make the ghosts faster/slower. -listo
 5. Make the ghosts smarter.
 """
 #Codigo obtenido de colección de videojuegos simples implementados en python: Free Python Games (https://grantjenks.com/docs/freegames/)
@@ -24,13 +24,14 @@ from freegames import floor, vector  #importación de metodos floor y vector.
 state = {'score': 0} 
 path = Turtle(visible=False) #las siguientes dos lineas ocultan a la tortuga del módulo para solo permitir el dibujado 
 writer = Turtle(visible=False)
-aim = vector(5, 0) #vector de direccion inicial de pacman
-pacman = vector(-40, -80) #Coordenadas x y de pacman 
-ghosts = [ #tuplas de coordenadas y direcciones de cada fantasma
-    [vector(-180, 160), vector(5, 0)],
-    [vector(-180, -160), vector(0, 5)],
-    [vector(100, 160), vector(0, -5)],
-    [vector(100, -160), vector(-5, 0)],
+aim = vector(0, 0) #vector de direccion inicial de pacman - modificacion: la direccion inicial no es ninguna para moverlo como usuario
+pacman = vector(-20, -40) #Coordenadas x y de pacman - ya modificadas 
+ghosts = [ #tuplas de coordenadas y direcciones de cada fantasma - actualizada velocidad más alta
+    [vector(-180, 160), vector(7, 0)],
+    [vector(-180, -160), vector(0, 7)],
+    [vector(100, 160), vector(0, -7)],
+    [vector(100, -160), vector(-7, 0)],
+    [vector(40,100), vector(7,0)] # anadi nuevo fantasma completamente funcional con esta linea
 ]
 # fmt: off
 tiles = [
@@ -140,11 +141,11 @@ def move():
         if valid(point + course): #valida su trayectoria y aplica movimiento 
             point.move(course)
         else: #genera una decision aleatoria que decida un proximo movimiento 
-            options = [
-                vector(5, 0),
-                vector(-5, 0),
-                vector(0, 5),
-                vector(0, -5),
+            options = [ #velocidad actualizada
+                vector(7, 0),
+                vector(-7, 0),
+                vector(0, 7),
+                vector(0, -7),
             ]
             plan = choice(options)
             course.x = plan.x
