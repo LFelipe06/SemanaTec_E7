@@ -2,7 +2,7 @@
 
 Exercises
 
-1. Change the board.
+1. Change the board -listo 
 2. Change the number of ghosts. -listo
 3. Change where pacman starts. -listo
 4. Make the ghosts faster/slower. -listo
