@@ -43,6 +43,7 @@ def draw():
     if inside(ball):
         goto(ball.x, ball.y)
         dot(6, 'red')
+    
     #Se actualiza el entorno grafico
     update()
 #Con esta funcion se establece el movimiento de los objetivos y del disparo del jugador (bola roja)
