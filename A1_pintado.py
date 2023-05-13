@@ -10,10 +10,10 @@ import math
 def line(start, end):
     "Draw line from start to end."
     up()
-    #Se trazlada el cursor de dibujado a las coordenadas start.x y start.y
+    #Se traslada el cursor de dibujado a las coordenadas start.x y start.y
     goto(start.x, start.y)
     down()
-    #Se trazlada el cursor de dibujado a las coordenadas end.x y end.y
+    #Se traslada el cursor de dibujado a las coordenadas end.x y end.y
     goto(end.x, end.y)
 
 #Se define la función para el dibujado de un cuadrado. La función up() hace que no se trace
@@ -22,7 +22,7 @@ def line(start, end):
 def square(start, end):
     "Draw square from start to end."
     up()
-    #Se trazlada el cursor de dibujado a las coordenadas start.x y start.y
+    #Se traslada el cursor de dibujado a las coordenadas start.x y start.y
     goto(start.x, start.y)
     down()
     #begin_fill() iniciara la función de rellenado de la figura dibujada 
@@ -84,7 +84,7 @@ def triangle(start, end):
     #Después del trazado, la dirección de dibujado rota 120 grados para posteriormente repetir el ciclo
     for count in range(3):
         forward(lado)
-        left(120)
+        left(120)   
 
 #Para cada clic en el area de dibujado, se almacenaran las coordenadas x,y del cursor
 def tap(x, y):
