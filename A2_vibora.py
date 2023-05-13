@@ -1,4 +1,7 @@
-#Código obtenido del sitio Grant Jenks para la actividad 2 de la semana Tec "Herramientas computacionales: el arte de la programación"
+#Codigo obtenido de colección de videojuegos simples implementados en python: Free Python Games (https://grantjenks.com/docs/freegames/)
+#Editado por Cruz Daniel Perez Jimenez en el transcuro de Mayo 11 y Mayo 12 de 2023 
+#para la UF: TC1001S.121 del semestre FJ 23 en ITESM C. Puebla 
+
 #Se llaman las librerias que ayudan a la ejecucion grafica y logica del juego
 from turtle import *
 from random import randrange, choice
@@ -7,6 +10,9 @@ from freegames import square, vector
 food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
+#Se escoje de manera aleatoria un color  y se almacenan en variables que se usaran en la funcion "square" para darle un color distinto a la comida y vibora
+colorV=choice(['black', 'orange', 'blue', 'yellow', 'gray'])
+colorF=choice(['cyan', 'green', 'skyblue', 'turquoise', 'lightgreen'])
 #Con esta funcion se cambian los valores del vector de direccion de la serpiente en base a las variables en x y y
 def change(x, y):
     "Change snake direction."
@@ -45,9 +51,11 @@ def move():
     clear()
     #Se dibuja el cuerpo de la serpiente
     for body in snake:
-        square(body.x, body.y, 9, 'black')
+        #Se utiliza la varibale colorV para dibujar con el color escogido al azar a la vibora
+        square(body.x, body.y, 9, colorV)
     #Se actualiza el ambiente grafico
-    square(food.x, food.y, 9, 'green')
+    #Se utiliza la variable colorF para dibujar la comida con un color al azar
+    square(food.x, food.y, 9, colorF)
     update()
     #Mueve a la serpiente agregandole valores al vector de direccion de la serpiente
     ontimer(move, 100)
