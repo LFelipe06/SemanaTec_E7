@@ -104,3 +104,29 @@ como reflejar el cambio constante sobre el entorno.
 Ya en la función principal, se abre la recepción de input por mouse y se llama a 
 la función de movimiento, que a su vez llama a draw, para comenzar el ciclo de
 ejecución del entorno.
+
+# Actividad 5. Memory:
+El juego de memoria consiste de la dinámica del juego comúnmente apodado
+"Memorama". El jugador debe explorar "cartas" volteadas que tienen números detrás
+y recordando las posiciones de algunas, ir encontrando pares iguales para dejar
+los pares volteados y poco a poco revelar la imagen escondida. 
+El código para ello empieza por definir variables de estado y ambiente y
+procede a definir las funciones auxiliares y de rutina que estarán ayudando
+a la ejecución del programa. 
+La primera de ellas es square, que dibuja los cuadrados blancos en las posiciones
+de cada una de las tarjetas. Le sigue index, que convierte pares ordenados
+en recuadros de la distrbución generada para las tarjetas. La función de
+xy, por su parte, realiza el proceso contrario.
+Resta tap, que basado en las coordenadas del clic de un usuario, encuentra 
+la tarjeta asociada y la voltea. Esta condicionada de manera que 
+cada intento se registre en un contador y detecte cuando dos taps
+consecutivos encuentren un par de tarjetas con valores iguales. Al encontrar
+un par de tarjetas, imprime en pantalla el numero de tarjetas descubiertas y,
+cuando el usuario ha ganado el juego, imprime una leyenda de felicitación. 
+Por último está la función draw, que se encarga de dibujar el escenario general, 
+monta la imagen del auto detras de las tarjetas y rellena los espacios de 
+los pares que no han sido descubiertos. Además, si hay una tarjeta seleccionada, 
+escribe sobre ella su valor asociado para poder simular que está "volteada".
+La función principal se encarga de inaugurar el ambiente gráfico y llamar a las
+rutinas de ejecución para poder iniciar el ciclo del programa. 
+
