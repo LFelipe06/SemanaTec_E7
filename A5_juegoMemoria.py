@@ -1,6 +1,9 @@
 from random import *
 from turtle import *
 from freegames import path
+#Se declaran las variables a manera de contador.
+taps = 0
+descubiertos = 0
 
 car = path('car.gif')
 tiles = list(range(32)) * 2
@@ -31,13 +34,27 @@ def tap(x, y):
     "Update mark and hidden tiles based on tap."
     spot = index(x, y)
     mark = state['mark']
+    # Se incrementa la variable correspondiente al numero de taps que el usuario a 
+    # realizado. Se imprime en terminal.
+    global taps
+    taps+=1
+    print("Numero de taps: " + str(taps))
 
     if mark is None or mark == spot or tiles[mark] != tiles[spot]:
         state['mark'] = spot
+        
     else:
         hide[spot] = False
         hide[mark] = False
         state['mark'] = None
+        # Se actualiza la variable correspondiente a los tiles descubiertos en caso 
+        # de haber una coincidencia. Se imprime en terminal.
+        global descubiertos
+        descubiertos+=2
+        print("Tiles descubiertos: " + str(descubiertos))
+    #Se valida el numero de cuadrados descubiertos, si es 64 entonces se desplegara un mensaje
+    if(descubiertos==64):
+        print("Has desubierto todos los tiles")
 
 def draw():
     "Draw image and tiles."
@@ -56,9 +73,11 @@ def draw():
     if mark is not None and hide[mark]:
         x, y = xy(mark)
         up()
-        goto(x + 2, y)
+        # Se establece las coordenadas del cursor de trazado.
+        goto(x + 25, y)
         color('black')
-        write(tiles[mark], font=('Arial', 30, 'normal'))
+        # A la funcion write() se le añade como parámtetro : align="center"
+        write(tiles[mark], font=('Arial', 30, 'normal'), align="center")
 
     update()
     ontimer(draw, 100)
