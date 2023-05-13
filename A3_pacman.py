@@ -1,5 +1,5 @@
 #Codigo obtenido de colección de videojuegos simples implementados en python: Free Python Games (https://grantjenks.com/docs/freegames/)
-#Editado por Andre Rossell Manrique A01736035 en el transcuro de Mayo 11 y Mayo 12 de 2023 
+#Editado por Andre Rossell Manrique A01736035 y Cruz Daniel Pérez Jiménez A01736214 en el transcuro de Mayo 11 y Mayo 12 de 2023 
 #para la UF: TC1001S.121 del semestre FJ 23 en ITESM C. Puebla 
 
 
