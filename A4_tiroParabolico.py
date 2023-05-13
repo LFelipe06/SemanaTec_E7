@@ -39,7 +39,7 @@ def draw():
     if inside(ball):
         goto(ball.x, ball.y)
         dot(6, 'red')
-
+    
     update()
 
 def move():
